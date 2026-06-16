@@ -60,10 +60,11 @@ if [[ "$user_choice" =~ ^[Yy][Ee][Ss]$ ]]; then
     read -p "Enter Run Mode (live / dry_run) [default live]: " custom_mode
     read -p "Enter Total Class Sessions (default 15): " custom_sessions
     
-    warn_val=${custom_warn:-75}
-    fail_val=${custom_fail:-50}
+    # Strip any accidental hidden character entries or spaces from user input
+    warn_val=$(echo "${custom_warn:-75}" | tr -cd '0-9')
+    fail_val=$(echo "${custom_fail:-50}" | tr -cd '0-9')
     run_mode=${custom_mode:-"live"}
-    total_sessions=${custom_sessions:-15}
+    total_sessions=$(echo "${custom_sessions:-15}" | tr -cd '0-9')
 fi
 
 cat << EOF > "${PARENT_DIR}/Helpers/config.json"
@@ -77,6 +78,7 @@ cat << EOF > "${PARENT_DIR}/Helpers/config.json"
 }
 EOF
 
+# Clean integer checks with correct spacing formatting
 if [ "$warn_val" -ne 75 ]; then
     sed -i "s/\"warning\": 75/\"warning\": ${warn_val}/" "${PARENT_DIR}/Helpers/config.json"
 fi
