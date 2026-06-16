@@ -2,6 +2,13 @@
 
 Automated workspace builder for the Attendance Tracker application.
 
+# Video
+
+The video will serve as a guide to help explain and understand how to execute and run the test.
+Video was uploaded to YouTube as GitHub only allows videos under 10 MB
+
+https://youtu.be/rjt7eDtgk3k
+
 ## Requirements
 * Python 3
 
