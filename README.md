@@ -1,4 +1,4 @@
-# Project Factory Script
+# Project
 
 Automated workspace builder for the Attendance Tracker application.
 
